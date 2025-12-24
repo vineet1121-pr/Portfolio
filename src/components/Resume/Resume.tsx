@@ -33,6 +33,7 @@ const Resume: React.FC = () => {
     }
   ];
 
+  /* Future use - education data
   const education = [
     {
       id: 1,
@@ -51,7 +52,9 @@ const Resume: React.FC = () => {
       grade: "85%"
     }
   ];
+  */
 
+  /* Future use - certifications data
   const certifications = [
     {
       id: 1,
@@ -72,7 +75,9 @@ const Resume: React.FC = () => {
       year: "2021"
     }
   ];
+  */
 
+  /* Future use - download handler
   const handleDownload = () => {
     const resumeUrl = '/Vineet Jethva Updated.pdf';
     
@@ -94,6 +99,7 @@ const Resume: React.FC = () => {
         alert('Resume file is not available yet. Please add your resume file to the public folder.');
       });
   };
+  */
 
   return (
     <section id="resume" className="resume">

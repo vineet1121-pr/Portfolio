@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { describe, test, expect, beforeAll, afterAll, vi } from 'vitest';
 import ErrorBoundary from './ErrorBoundary';
 
 // Component that throws an error for testing
@@ -13,7 +14,7 @@ describe('ErrorBoundary Component', () => {
   // Suppress console.error for these tests
   const originalError = console.error;
   beforeAll(() => {
-    console.error = jest.fn();
+    console.error = vi.fn();
   });
 
   afterAll(() => {

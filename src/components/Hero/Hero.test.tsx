@@ -1,19 +1,20 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
 import Hero from './Hero';
 
 // Mock react-scroll
-jest.mock('react-scroll', () => ({
+vi.mock('react-scroll', () => ({
   Link: ({ children, to }: { children: React.ReactNode; to: string }) => <a href={`#${to}`}>{children}</a>,
 }));
 
 describe('Hero Component', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
-    jest.useRealTimers();
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
   });
 
   test('renders hero section', () => {
@@ -26,7 +27,7 @@ describe('Hero Component', () => {
     render(<Hero />);
     
     // Fast-forward time for typing animation
-    jest.advanceTimersByTime(2000);
+    vi.advanceTimersByTime(2000);
     
     await waitFor(() => {
       expect(screen.getByText(/Hi, I'm Vineet/i)).toBeInTheDocument();
@@ -52,7 +53,7 @@ describe('Hero Component', () => {
     render(<Hero />);
     
     // Mock document.createElement
-    const createElementSpy = jest.spyOn(document, 'createElement');
+    const createElementSpy = vi.spyOn(document, 'createElement');
     
     const downloadButton = screen.getByText('Download Resume');
     downloadButton.click();

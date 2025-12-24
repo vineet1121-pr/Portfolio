@@ -1,8 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, test, expect, vi } from 'vitest';
 import Navbar from './Navbar';
 
 // Mock react-scroll
-jest.mock('react-scroll', () => ({
+vi.mock('react-scroll', () => ({
   Link: ({ children, to, onClick }: { children: React.ReactNode; to: string; onClick?: () => void }) => (
     <a href={`#${to}`} onClick={onClick}>
       {children}

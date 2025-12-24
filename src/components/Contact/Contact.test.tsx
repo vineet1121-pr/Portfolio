@@ -1,13 +1,14 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, test, expect, beforeEach, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import Contact from './Contact';
 
 // Mock fetch
-global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
+global.fetch = vi.fn() as any;
 
 describe('Contact Component', () => {
   beforeEach(() => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockClear();
+    vi.clearAllMocks();
   });
 
   test('renders contact form', () => {
@@ -39,7 +40,7 @@ describe('Contact Component', () => {
   });
 
   test('submits form successfully', async () => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce({
+    vi.mocked(fetch).mockResolvedValueOnce({
       json: async () => ({ success: true }),
     } as Response);
 
@@ -62,7 +63,7 @@ describe('Contact Component', () => {
   });
 
   test('handles form submission error', async () => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockRejectedValueOnce(new Error('Network error'));
+    vi.mocked(fetch).mockRejectedValueOnce(new Error('Network error'));
 
     render(<Contact />);
     
@@ -83,7 +84,7 @@ describe('Contact Component', () => {
   });
 
   test('displays loading state during submission', async () => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockImplementationOnce(
+    vi.mocked(fetch).mockImplementationOnce(
       () => new Promise((resolve) => setTimeout(() => resolve({ json: () => ({ success: true }) } as any as Response), 1000))
     );
 
@@ -105,7 +106,7 @@ describe('Contact Component', () => {
   });
 
   test('clears form after successful submission', async () => {
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce({
+    vi.mocked(fetch).mockResolvedValueOnce({
       json: async () => ({ success: true }),
     } as Response);
 

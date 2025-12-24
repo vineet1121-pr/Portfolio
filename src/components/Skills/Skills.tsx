@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Skills.css';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const skillsRef = useRef(null);
 
+  // Skills data - can be used for rendering when implementing the UI
+  // @ts-expect-error - keeping for future use
   const skills = [
     {
       id: 1,

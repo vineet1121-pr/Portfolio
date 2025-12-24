@@ -1,34 +1,50 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// vitest setup
 import '@testing-library/jest-dom';
+import { expect, afterEach, vi } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import * as matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
+
+afterEach(() => {
+  cleanup();
+});
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: vi.fn().mockImplementation((query: string) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
 });
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
-  constructor(callback) {
+  callback: IntersectionObserverCallback;
+  
+  constructor(callback: IntersectionObserverCallback) {
     this.callback = callback;
   }
 
   observe() {
-    this.callback([{ isIntersecting: true }]);
+    this.callback([{ isIntersecting: true } as IntersectionObserverEntry], this as any);
   }
 
   unobserve() {}
   disconnect() {}
-};
+  
+  get root() { return null; }
+  get rootMargin() { return ''; }
+  get thresholds() { return []; }
+  takeRecords() { return []; }
+} as any;
 
 // Mock scrollTo
-window.scrollTo = jest.fn();
+window.scrollTo = vi.fn() as any;
