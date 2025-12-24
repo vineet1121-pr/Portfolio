@@ -8,7 +8,7 @@ const About = () => {
         <h2 className="section-title">About Me</h2>
         <div className="about-content">
           <div className="about-image">
-            <img src="https://via.placeholder.com/400x400?text=Your+Photo" alt="Profile" />
+            <img src="/Vineet-Profile.png" alt="Vineet Jethva" />
           </div>
           <div className="about-text">
             <h3>Frontend Developer @ Vagaro | React & TypeScript Expert</h3>
