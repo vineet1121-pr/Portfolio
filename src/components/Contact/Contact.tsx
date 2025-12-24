@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import './Contact.css';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+type SubmitStatus = 'success' | 'error' | null;
+
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
     
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -28,7 +38,7 @@ const Contact = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: '1aa44034-205a-4f1e-b85c-ef918eed576d', // Replace with your Web3Forms access key
+          access_key: '1aa44034-205a-4f1e-b85c-ef918eed576d',
           name: formData.name,
           email: formData.email,
           message: formData.message,
@@ -41,18 +51,22 @@ const Contact = () => {
       const result = await response.json();
       
       if (result.success) {
-        alert('Message sent successfully! I will get back to you soon.');
+        setSubmitStatus('success');
         setFormData({
           name: '',
           email: '',
           message: ''
         });
+        
+        setTimeout(() => setSubmitStatus(null), 5000);
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
       console.error('Failed to send email:', error);
-      alert('Failed to send message. Please email me directly at jethvavinit99@gmail.com');
+      setSubmitStatus('error');
+      
+      setTimeout(() => setSubmitStatus(null), 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -91,7 +105,7 @@ const Contact = () => {
               <div className="form-group">
                 <textarea
                   name="message"
-                  rows="5"
+                  rows={5}
                   placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
@@ -99,8 +113,29 @@ const Contact = () => {
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? (
+                  <span className="button-content">
+                    <span className="spinner"></span>
+                    Sending...
+                  </span>
+                ) : (
+                  'Send Message'
+                )}
               </button>
+              
+              {submitStatus === 'success' && (
+                <div className="alert alert-success">
+                  <i className="fas fa-check-circle"></i>
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="alert alert-error">
+                  <i className="fas fa-exclamation-circle"></i>
+                  Failed to send message. Please email me directly at jethvavinit99@gmail.com
+                </div>
+              )}
             </form>
           </div>
           <div className="contact-info">

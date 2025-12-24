@@ -1,8 +1,16 @@
 import React from 'react';
 import './Projects.css';
 
-const Projects = () => {
-  const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+}
+
+const Projects: React.FC = () => {
+  const projects: Project[] = [
     {
       id: 1,
       title: 'Selfcare Portal',

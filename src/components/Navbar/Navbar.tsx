@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import './Navbar.css';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,32 +27,47 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="logo">
-          <h2>Vineet</h2>
+          <div className="logo-container">
+            <span className="logo-bracket">&lt;</span>
+            <span className="logo-text">Vineet</span>
+            <span className="logo-bracket">/&gt;</span>
+          </div>
+          <div className="logo-subtitle">Frontend Developer</div>
         </div>
         <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
           <li>
             <Link to="home" smooth={true} duration={500} onClick={closeMenu}>
-              Home
+              <span className="nav-icon">🏠</span>
+              <span className="nav-text">Home</span>
             </Link>
           </li>
           <li>
             <Link to="about" smooth={true} duration={500} onClick={closeMenu}>
-              About
+              <span className="nav-icon">👤</span>
+              <span className="nav-text">About</span>
             </Link>
           </li>
           <li>
             <Link to="projects" smooth={true} duration={500} onClick={closeMenu}>
-              Projects
+              <span className="nav-icon">💼</span>
+              <span className="nav-text">Projects</span>
             </Link>
           </li>
           <li>
             <Link to="skills" smooth={true} duration={500} onClick={closeMenu}>
-              Skills
+              <span className="nav-icon">⚡</span>
+              <span className="nav-text">Skills</span>
             </Link>
           </li>
           <li>
+            <Link to="resume" smooth={true} duration={500} onClick={closeMenu}>
+              <span className="nav-icon">📄</span>
+              <span className="nav-text">Resume</span>
+            </Link>
+          </li>
+          <li className="nav-cta">
             <Link to="contact" smooth={true} duration={500} onClick={closeMenu}>
-              Contact
+              <span className="nav-text">Contact Me</span>
             </Link>
           </li>
         </ul>

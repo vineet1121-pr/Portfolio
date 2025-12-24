@@ -1,7 +1,7 @@
 import React from 'react';
 import './About.css';
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <section id="about" className="about">
       <div className="container">
@@ -29,14 +29,9 @@ const About = () => {
               CA & IT in 2025 and BSC in IT in 2022 from K.S School of Business Management.
             </p>
             <div className="social-links">
-              <a href="https://github.com/vineetjethva" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-github"></i>
-              </a>
-              <a href="https://linkedin.com/in/vineetjethva" target="_blank" rel="noopener noreferrer">
+
+              <a href="https://www.linkedin.com/in/vineet-jethva-14a62323b" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="https://twitter.com/vineetjethva" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-twitter"></i>
               </a>
               <a href="mailto:jethvavinit99@gmail.com" target="_blank" rel="noopener noreferrer">
                 <i className="fas fa-envelope"></i>
