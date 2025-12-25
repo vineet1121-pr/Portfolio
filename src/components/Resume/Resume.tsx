@@ -5,20 +5,6 @@ const Resume: React.FC = () => {
   const experience = [
     {
       id: 1,
-      position: "React Developer",
-      company: "Vagaro Technologies",
-      period: "June 2025 - Present",
-      location: "Ahmedabad, India",
-      responsibilities: [
-        "Developed and maintained React-based web applications for salon and spa management",
-        "Implemented TypeScript for type-safe code and enhanced code maintainability",
-        "Built reusable component libraries following best practices and design patterns",
-        "Collaborated with cross-functional teams to deliver scalable business solutions",
-        "Optimized application performance resulting in improved user experience"
-      ]
-    },
-    {
-      id: 2,
       position: "Frontend Developer",
       company: "Techkarma Technologies",
       period: "Jan 2022 - June 2025",
@@ -29,6 +15,20 @@ const Resume: React.FC = () => {
         "Participated in code reviews and agile development processes",
         "Implemented new features and resolved bugs based on client requirements",
         "Worked closely with designers to ensure pixel-perfect UI implementation"
+      ]
+    },
+    {
+      id: 2,
+      position: "React Developer",
+      company: "Vagaro Technologies",
+      period: "June 2025 - Present",
+      location: "Ahmedabad, India",
+      responsibilities: [
+        "Developed and maintained React-based web applications for salon and spa management",
+        "Implemented TypeScript for type-safe code and enhanced code maintainability",
+        "Built reusable component libraries following best practices and design patterns",
+        "Collaborated with cross-functional teams to deliver scalable business solutions",
+        "Optimized application performance resulting in improved user experience"
       ]
     }
   ];

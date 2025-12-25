@@ -7,8 +7,8 @@ const Hero: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState<number>(0);
   const fullText = "Hi, I'm Vineet Jethva";
   const roles = [
-    "Frontend Developer",
     "React Specialist",
+    "Frontend Developer",
     "Problem Solver"
   ];
 
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
           </div>
 
           <p className="hero-description">
-            Currently working at <span className="highlight">Vagaro Technologies</span> as a Frontend Developer,
+            Currently working at <span className="highlight">Vagaro Technologies</span> as a React Developer,
             building modern web applications with <span className="highlight">React</span> and <span className="highlight">TypeScript</span>. 
             With <span className="highlight">3+ years</span> of experience, I specialize in component-based architecture
             and delivering scalable, real-world business solutions.
