@@ -10,6 +10,7 @@ interface BlogPost {
   date: string;
   readTime: string;
   tags: string[];
+  link: string;
 }
 
 type Category = 'All' | 'React' | 'TypeScript' | 'Angular' | 'CSS' | 'Development';
@@ -26,7 +27,8 @@ const Blog: React.FC = () => {
       category: 'React',
       date: 'Dec 20, 2025',
       readTime: '5 min read',
-      tags: ['React', 'Architecture', 'Best Practices']
+      tags: ['React', 'Architecture', 'Best Practices'],
+      link: 'https://react.dev/learn/thinking-in-react'
     },
     {
       id: 2,
@@ -36,7 +38,8 @@ const Blog: React.FC = () => {
       category: 'TypeScript',
       date: 'Dec 15, 2025',
       readTime: '7 min read',
-      tags: ['TypeScript', 'JavaScript', 'Development']
+      tags: ['TypeScript', 'JavaScript', 'Development'],
+      link: 'https://www.typescriptlang.org/docs/handbook/intro.html'
     },
     {
       id: 3,
@@ -46,7 +49,8 @@ const Blog: React.FC = () => {
       category: 'CSS',
       date: 'Dec 10, 2025',
       readTime: '6 min read',
-      tags: ['CSS', 'Design', 'Web Development']
+      tags: ['CSS', 'Design', 'Web Development'],
+      link: 'https://web.dev/articles/css-container-queries'
     },
     {
       id: 4,
@@ -56,7 +60,8 @@ const Blog: React.FC = () => {
       category: 'Angular',
       date: 'Dec 5, 2025',
       readTime: '8 min read',
-      tags: ['Angular', 'Performance', 'Optimization']
+      tags: ['Angular', 'Performance', 'Optimization'],
+      link: 'https://angular.dev/best-practices/runtime-performance'
     },
     {
       id: 5,
@@ -66,7 +71,8 @@ const Blog: React.FC = () => {
       category: 'Development',
       date: 'Nov 28, 2025',
       readTime: '6 min read',
-      tags: ['API', 'REST', 'Integration']
+      tags: ['API', 'REST', 'Integration'],
+      link: 'https://restfulapi.net/'
     },
     {
       id: 6,
@@ -76,7 +82,8 @@ const Blog: React.FC = () => {
       category: 'Development',
       date: 'Nov 20, 2025',
       readTime: '5 min read',
-      tags: ['Accessibility', 'WCAG', 'Best Practices']
+      tags: ['Accessibility', 'WCAG', 'Best Practices'],
+      link: 'https://www.w3.org/WAI/WCAG21/quickref/'
     }
   ];
 
@@ -131,10 +138,15 @@ const Blog: React.FC = () => {
                     <span key={index} className="blog-tag">#{tag}</span>
                   ))}
                 </div>
-                <button className="read-more-btn">
+                <a 
+                  href={post.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="read-more-btn"
+                >
                   Read More
                   <i className="fas fa-arrow-right"></i>
-                </button>
+                </a>
               </div>
             </article>
           ))}
