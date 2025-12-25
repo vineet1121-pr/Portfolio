@@ -211,8 +211,8 @@ const Hero: React.FC = () => {
         <span>Scroll to explore</span>
         <div className="mouse">
           <div className="wheel"></div>
-        </div> */}
-      </div>
+        </div>
+      </div>   */}
     </section>
   );
 };
