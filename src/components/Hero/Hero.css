@@ -181,14 +181,27 @@
   line-height: 1.1;
   margin-bottom: 1.5rem;
   position: relative;
+  letter-spacing: -0.03em;
 }
 
 .title-main {
-  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 50%, #a78bfa 100%);
+  background: var(--gradient-creative);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: titleGlow 3s ease-in-out infinite;
+  animation: gradientFlow 8s ease infinite, glowPulse 3s ease-in-out infinite;
+  display: inline-block;
+  position: relative;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.4)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 45px rgba(99, 102, 241, 0.7)) drop-shadow(0 0 80px rgba(236, 72, 153, 0.3));
+  }
 }
 
 @keyframes titleGlow {

@@ -36,37 +36,43 @@ const Navbar: React.FC = () => {
         </div>
         <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
           <li>
-            <Link to="home" smooth={true} duration={500} onClick={closeMenu}>
+            <Link to="home" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
               <span className="nav-icon">🏠</span>
               <span className="nav-text">Home</span>
             </Link>
           </li>
           <li>
-            <Link to="about" smooth={true} duration={500} onClick={closeMenu}>
+            <Link to="about" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
               <span className="nav-icon">👤</span>
               <span className="nav-text">About</span>
             </Link>
           </li>
           <li>
-            <Link to="projects" smooth={true} duration={500} onClick={closeMenu}>
-              <span className="nav-icon">💼</span>
-              <span className="nav-text">Projects</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="skills" smooth={true} duration={500} onClick={closeMenu}>
+            <Link to="skills" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
               <span className="nav-icon">⚡</span>
               <span className="nav-text">Skills</span>
             </Link>
           </li>
           <li>
-            <Link to="resume" smooth={true} duration={500} onClick={closeMenu}>
-              <span className="nav-icon">📄</span>
-              <span className="nav-text">Resume</span>
+            <Link to="projects" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
+              <span className="nav-icon">💼</span>
+              <span className="nav-text">Projects</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="resume" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
+              <span className="nav-icon">📋</span>
+              <span className="nav-text">Experience</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="blog" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
+              <span className="nav-icon">📝</span>
+              <span className="nav-text">Blog</span>
             </Link>
           </li>
           <li className="nav-cta">
-            <Link to="contact" smooth={true} duration={500} onClick={closeMenu}>
+            <Link to="contact" smooth="easeInOutQuad" duration={500} offset={-70} onClick={closeMenu}>
               <span className="nav-text">Contact Me</span>
             </Link>
           </li>

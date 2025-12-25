@@ -2,17 +2,18 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(10, 10, 15, 0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-color);
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
   z-index: 1000;
   padding: 1.2rem 0;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
   background: rgba(10, 10, 15, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.1);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 .navbar .container {
@@ -31,6 +32,12 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
 }
 
 .logo-bracket {
@@ -38,6 +45,18 @@
   font-size: 1.5rem;
   font-weight: 900;
   font-family: 'Fira Code', monospace;
+  animation: bracketPulse 2s ease-in-out infinite;
+}
+
+@keyframes bracketPulse {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  }
+  50% {
+    opacity: 0.7;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+  }
 }
 
 .logo-text {
@@ -74,22 +93,31 @@
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   cursor: pointer;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+  background: rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
 }
 
 .nav-icon {
   font-size: 1.1rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links a:hover .nav-icon {
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
 }
 
 .nav-cta a {
@@ -99,12 +127,33 @@
   color: white !important;
   font-weight: 600;
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-cta a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
 .nav-cta a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
+  background: var(--gradient-accent);
+}
+
+.nav-cta a:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .nav-cta a::before {
@@ -114,22 +163,27 @@
 .nav-links a::before {
   content: '';
   position: absolute;
-  bottom: -5px;
-  left: 0;
+  bottom: 0;
+  left: 50%;
   width: 0;
   height: 2px;
-  background: var(--gradient);
-  transition: width 0.3s ease;
+  background: var(--gradient-creative);
+  background-size: 200% 200%;
+  animation: gradientFlow 3s ease infinite;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+  width: 80%;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--text-primary);
-}
-
-.nav-links a:hover::before,
-.nav-links a.active::before {
-  width: 100%;
 }
 
 .burger {
@@ -142,8 +196,9 @@
 .burger div {
   width: 25px;
   height: 3px;
-  background: var(--text-dark);
-  transition: var(--transition);
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
 .burger.toggle .line1 {
@@ -168,15 +223,27 @@
     right: -100%;
     top: 70px;
     flex-direction: column;
-    background: var(--white);
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(20px);
     width: 100%;
     text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
     padding: 2rem 0;
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
   }
 
   .nav-links.active {
     right: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    padding: 0 2rem;
+  }
+  
+  .nav-links a {
+    width: 100%;
+    justify-content: center;
   }
 }

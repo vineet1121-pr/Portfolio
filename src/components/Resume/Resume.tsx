@@ -5,7 +5,7 @@ const Resume: React.FC = () => {
   const experience = [
     {
       id: 1,
-      position: "Frontend Developer",
+      position: "React Developer",
       company: "Vagaro Technologies",
       period: "June 2025 - Present",
       location: "Ahmedabad, India",
@@ -19,7 +19,7 @@ const Resume: React.FC = () => {
     },
     {
       id: 2,
-      position: "React Developer",
+      position: "Frontend Developer",
       company: "Techkarma Technologies",
       period: "Jan 2022 - June 2025",
       location: "Ahmedabad, India",
