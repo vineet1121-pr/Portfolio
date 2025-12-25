@@ -10,7 +10,6 @@ interface BlogPost {
   date: string;
   readTime: string;
   tags: string[];
-  link: string;
 }
 
 type Category = 'All' | 'React' | 'TypeScript' | 'Angular' | 'CSS' | 'Development';
@@ -27,8 +26,7 @@ const Blog: React.FC = () => {
       category: 'React',
       date: 'Dec 20, 2025',
       readTime: '5 min read',
-      tags: ['React', 'Architecture', 'Best Practices'],
-      link: 'https://react.dev/learn/thinking-in-react'
+      tags: ['React', 'Architecture', 'Best Practices']
     },
     {
       id: 2,
@@ -38,8 +36,7 @@ const Blog: React.FC = () => {
       category: 'TypeScript',
       date: 'Dec 15, 2025',
       readTime: '7 min read',
-      tags: ['TypeScript', 'JavaScript', 'Development'],
-      link: 'https://www.typescriptlang.org/docs/handbook/intro.html'
+      tags: ['TypeScript', 'JavaScript', 'Development']
     },
     {
       id: 3,
@@ -49,8 +46,7 @@ const Blog: React.FC = () => {
       category: 'CSS',
       date: 'Dec 10, 2025',
       readTime: '6 min read',
-      tags: ['CSS', 'Design', 'Web Development'],
-      link: 'https://web.dev/articles/css-container-queries'
+      tags: ['CSS', 'Design', 'Web Development']
     },
     {
       id: 4,
@@ -60,8 +56,7 @@ const Blog: React.FC = () => {
       category: 'Angular',
       date: 'Dec 5, 2025',
       readTime: '8 min read',
-      tags: ['Angular', 'Performance', 'Optimization'],
-      link: 'https://angular.dev/best-practices/runtime-performance'
+      tags: ['Angular', 'Performance', 'Optimization']
     },
     {
       id: 5,
@@ -71,8 +66,7 @@ const Blog: React.FC = () => {
       category: 'Development',
       date: 'Nov 28, 2025',
       readTime: '6 min read',
-      tags: ['API', 'REST', 'Integration'],
-      link: 'https://restfulapi.net/'
+      tags: ['API', 'REST', 'Integration']
     },
     {
       id: 6,
@@ -82,8 +76,7 @@ const Blog: React.FC = () => {
       category: 'Development',
       date: 'Nov 20, 2025',
       readTime: '5 min read',
-      tags: ['Accessibility', 'WCAG', 'Best Practices'],
-      link: 'https://www.w3.org/WAI/WCAG21/quickref/'
+      tags: ['Accessibility', 'WCAG', 'Best Practices']
     }
   ];
 
@@ -96,7 +89,7 @@ const Blog: React.FC = () => {
   return (
     <section id="blog" className="blog">
       <div className="container">
-        <h2 className="section-title">Blog & Insights</h2>
+        <h2 className="section-title">Insights</h2>
         <p className="blog-intro">
           Sharing my knowledge and experiences in frontend development
         </p>
@@ -138,15 +131,6 @@ const Blog: React.FC = () => {
                     <span key={index} className="blog-tag">#{tag}</span>
                   ))}
                 </div>
-                <a 
-                  href={post.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="read-more-btn"
-                >
-                  Read More
-                  <i className="fas fa-arrow-right"></i>
-                </a>
               </div>
             </article>
           ))}
