@@ -207,11 +207,11 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="scroll-indicator-modern">
+      {/* <div className="scroll-indicator-modern">
         <span>Scroll to explore</span>
         <div className="mouse">
           <div className="wheel"></div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
